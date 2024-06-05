@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline';
-import YouTube from 'react-youtube';
+// import { CalendarDaysIcon, HandRaisedIcon } from '@heroicons/react/24/outline';
+// import YouTube from 'react-youtube';
 
-const answer3 = [
-  {
-    text: `Edward Quadros, PhD, is a Research Professor at SUNY – Downstate in the Departments of Medicine and Cell Biology. His research interests include biochemical and molecular aspects of vitamin B12/folate absorption, transport and metabolism; Genetic abnormalities of vitamin B12/folate dependent pathways; Cellular and metabolic consequences of vitamin B12 and folate deficiencies; Vitamin B12, folate and homocysteine metabolism in the elderly population with cardiovascular disease and cognitive disorders including Alzheimer’s dementia; Neuropathology of vitamin B12 and folate deficiency; B12, folate status and DNA methylation in the brain.
+// const answer3 = [
+//   {
+//     text: `Edward Quadros, PhD, is a Research Professor at SUNY – Downstate in the Departments of Medicine and Cell Biology. His research interests include biochemical and molecular aspects of vitamin B12/folate absorption, transport and metabolism; Genetic abnormalities of vitamin B12/folate dependent pathways; Cellular and metabolic consequences of vitamin B12 and folate deficiencies; Vitamin B12, folate and homocysteine metabolism in the elderly population with cardiovascular disease and cognitive disorders including Alzheimer’s dementia; Neuropathology of vitamin B12 and folate deficiency; B12, folate status and DNA methylation in the brain.
 
-Another area of research actively being pursued in Dr. Quadros' laboratory is the association of folate receptor autoimmunity with neural tube defect pregnancy and cerebral folate deficiency. Current research is focused on fetal and neonatal brain development and the role of folate and B12 in this process.
+// Another area of research actively being pursued in Dr. Quadros' laboratory is the association of folate receptor autoimmunity with neural tube defect pregnancy and cerebral folate deficiency. Current research is focused on fetal and neonatal brain development and the role of folate and B12 in this process.
 
-Dr. Quadros has established a strong link between an autoimmune disorder that produces autoantibodies against the folate receptor alpha, a membrane receptor involved in folate transport to the fetus and to the brain. Extensive research in Dr. Quadros’ laboratory is aimed at understanding the cause and effects of this autoimmune disorder and how best to prevent and treat the pathologic consequences.
+// Dr. Quadros has established a strong link between an autoimmune disorder that produces autoantibodies against the folate receptor alpha, a membrane receptor involved in folate transport to the fetus and to the brain. Extensive research in Dr. Quadros’ laboratory is aimed at understanding the cause and effects of this autoimmune disorder and how best to prevent and treat the pathologic consequences.
 
-Dr. Quadros holds a BSc in Chemistry from the University of Poona, a MSc in Applied Biology from the University of Bombay and a PhD in Biochemistry from the University of London.
+// Dr. Quadros holds a BSc in Chemistry from the University of Poona, a MSc in Applied Biology from the University of Bombay and a PhD in Biochemistry from the University of London.
 
-This talk was part of Synchrony 2021 Online Symposium - 'From Bench to Biopharma', organised by the The BRAIN Foundation in partnership with UC Davis MIND Institute and CalTech.`,
-  }
-];
+// This talk was part of Synchrony 2021 Online Symposium - 'From Bench to Biopharma', organised by the The BRAIN Foundation in partnership with UC Davis MIND Institute and CalTech.`,
+//   }
+// ];
 
 const context = [
   {
@@ -94,13 +94,19 @@ export default function Header() {
           </button>
         </form>
         <p className="mt-4 text-lg leading-8 text-gray-300">AI-powered search & chat for The Brain Foundation website.</p>
-        <div className="w-full px-10 md:px-60 lg:px-80">
-          {response && (
-            <div className="mt-4 mx-auto overflow-auto h-60 rounded-md border-0 px-10 py-5 text-slate-400 shadow-sm text-md sm:text-sm sm:leading-6">
-              {response.response}
+            <div className="w-full px-10 md:px-60 lg:px-80">
+              {loading ? (
+                <div className="flex justify-center items-center h-60">
+                  <div className="spinner w-16 h-16 border-4 border-dashed rounded-full"></div>
+                </div>
+              ) : (
+                response && (
+                  <div className="mt-4 mx-auto overflow-auto rounded-md border-1 px-10 py-5 text-slate-400 shadow-sm text-md sm:text-sm sm:leading-6 ring-1 text-lg ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
+                    {response.response}
+                  </div>
+                )
+              )}
             </div>
-          )}
-        </div>
         <div className="w-full px-10 md:px-60 lg:px-80">
           {context.map((item) => (
             <div key={item.videoId} className="mt-4 mx-auto flex justify-around overflow-auto rounded-md border-0 h-25 md:h-25 lg:h-25 bg-white/5 px-5 py-5 text-slate-400 shadow-sm ring-1 text-lg ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6">
